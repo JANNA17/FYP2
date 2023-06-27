@@ -1,4 +1,4 @@
-<?xml version='1.0'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <model cmeta:id="bhalla_model_1999" name="hatakeyama_model_2003" xmlns="http://www.cellml.org/cellml/1.0#" xmlns:cellml="http://www.cellml.org/cellml/1.0#" xmlns:cmeta="http://www.cellml.org/metadata/1.0#">
     <!--
         *******************************************************
@@ -32,17 +32,17 @@
         <variable name="time" public_interface="out" units="s"/>
     </component>
     <component name="geometry">
-        <variable initial_value="0.1" name="kf5" private_interface="out" units="second_order_rate_constant"/>
-        <variable initial_value="1" name="kb5" private_interface="out" units="first_order_rate_constant"/>
-        <variable initial_value="0" name="kf23" private_interface="out" units="second_order_rate_constant"/>
+        <!-- var kf5: second_order_rate_constant {init: 0.1, priv: out};
+ var kb5: first_order_rate_constant {init: 1, priv: out};
+   var kf23: second_order_rate_constant {init: 0, priv: out};-->
         <!--the reaction with PI3K -->
-        <variable initial_value="0" name="kb23" private_interface="out" units="first_order_rate_constant"/>
+        <!-- var kb23: first_order_rate_constant {init: 0, priv: out};-->
         <!-- THE REACTION WITH P13K-->
-        <variable initial_value="0.00673" name="kf14" private_interface="out" units="first_order_rate_constant"/>
-        <variable initial_value="8.07" name="k14" private_interface="out" units="nm"/>
-        <variable initial_value="0" name="kf29" private_interface="out" units="second_order_rate_constant"/>
+        <!-- var kf14: first_order_rate_constant {init: 0.00673, priv: out};
+  var k14: nm {init: 8.07, priv: out};
+   var kf29: second_order_rate_constant {init: 0, priv: out};-->
         <!-- THE REACTION WITH AKT-->
-        <variable initial_value="0" name="kb29" private_interface="out" units="first_order_rate_constant"/>
+        <!--var kb29: first_order_rate_constant {init: 0, priv: out};-->
         <!-- THE REACTION WITH AKT-->
     </component>
     <group>
@@ -55,20 +55,20 @@
     </group>
     <connection>
         <map_components component_1="geometry" component_2="PI3K"/>
-        <map_variables variable_1="kf5" variable_2="kf5"/>
-        <map_variables variable_1="kb5" variable_2="kb5"/>
-        <map_variables variable_1="kf23" variable_2="kf23"/>
-        <map_variables variable_1="kb23" variable_2="kb23"/>
+        <!-- vars kf5 and kf5;
+ vars kb5 and kb5;
+  vars kf23 and kf23;
+ vars kb23 and kb23;-->
     </connection>
     <connection>
         <map_components component_1="geometry" component_2="RAF"/>
-        <map_variables variable_1="kf14" variable_2="kf14"/>
-        <map_variables variable_1="k14" variable_2="k14"/>
+        <!--  vars kf14 and kf14;
+  vars k14 and k14;-->
     </connection>
     <connection>
         <map_components component_1="geometry" component_2="Akt"/>
-        <map_variables variable_1="kf29" variable_2="kf29"/>
-        <map_variables variable_1="kb29" variable_2="kb29"/>
+        <!--vars kf29 and kf29;
+vars kb29 and kb29;-->
     </connection>
     <component name="PI3K">
         <variable name="time" public_interface="in" units="s"/>
@@ -82,8 +82,8 @@
         <variable initial_value="0" name="kb34" units="first_order_rate_constant"/>
         <variable initial_value="62.5" name="V4" units="flux"/>
         <variable initial_value="50" name="k4" units="nm"/>
-        <variable name="kf5" public_interface="in" units="second_order_rate_constant"/>
-        <variable name="kb5" public_interface="in" units="first_order_rate_constant"/>
+        <variable initial_value="0.1" name="kf5" units="second_order_rate_constant"/>
+        <variable initial_value="1" name="kb5" units="first_order_rate_constant"/>
         <variable initial_value="20" name="kf6" units="first_order_rate_constant"/>
         <variable initial_value="5" name="kb6" units="first_order_rate_constant"/>
         <variable initial_value="60" name="kf7" units="second_order_rate_constant"/>
@@ -94,8 +94,8 @@
         <variable initial_value="0" name="kb9" units="second_order_rate_constant"/>
         <variable initial_value="0.0154" name="V10" units="flux"/>
         <variable initial_value="340" name="k10" units="nm"/>
-        <variable name="kf23" public_interface="in" units="second_order_rate_constant"/>
-        <variable name="kb23" public_interface="in" units="first_order_rate_constant"/>
+        <variable initial_value="0" name="kf23" units="second_order_rate_constant"/>
+        <variable initial_value="0" name="kb23" units="first_order_rate_constant"/>
         <variable initial_value="9.85" name="kf24" units="first_order_rate_constant"/>
         <variable initial_value="0.0985" name="kb24" units="first_order_rate_constant"/>
         <variable initial_value="45.8" name="kf25" units="first_order_rate_constant"/>
@@ -996,8 +996,8 @@
         <variable initial_value="0" name="RAF_star" public_interface="out" units="nm"/>
         <variable initial_value="1.53" name="kf13" units="first_order_rate_constant"/>
         <variable initial_value="11.7" name="k13" units="nm"/>
-        <variable name="kf14" public_interface="in" units="first_order_rate_constant"/>
-        <variable name="k14" public_interface="in" units="nm"/>
+        <variable initial_value="0.00673" name="kf14" units="first_order_rate_constant"/>
+        <variable initial_value="8.07" name="k14" units="nm"/>
         <variable initial_value="7" name="E" units="nm"/>
         <variable initial_value="96.1" name="RAF" units="nm"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1106,8 +1106,8 @@
         <variable initial_value="39.1" name="k27" units="nm"/>
         <variable initial_value="17000" name="V28" units="flux"/>
         <variable initial_value="9.02" name="k28" units="nm"/>
-        <variable name="kf29" public_interface="in" units="second_order_rate_constant"/>
-        <variable name="kb29" public_interface="in" units="first_order_rate_constant"/>
+        <variable initial_value="0" name="kf29" units="second_order_rate_constant"/>
+        <variable initial_value="0" name="kb29" units="first_order_rate_constant"/>
         <variable initial_value="20000" name="V30" units="flux"/>
         <variable initial_value="80000" name="k30" units="nm"/>
         <variable initial_value="0" name="kf31" units="first_order_rate_constant"/>
@@ -2185,30 +2185,24 @@
             </apply>
         </math>
     </component>
-    <connection>
-        <map_components component_1="PI3K" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="Akt" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="RAF" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="RasGDPtoRasGTP" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="MEK" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="ERK" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
+    <!--   def map between PI3K and environment for
+       vars time and time;
+   enddef;-->
+    <!-- def map between Akt and environment for
+     vars time and time;
+enddef;-->
+    <!--def map between RAF and environment for
+    vars time and time;
+enddef;-->
+    <!--def map between RasGDPtoRasGTP and environment for
+    vars time and time;
+ enddef;-->
+    <!-- def map between MEK and environment for
+     vars time and time;
+ enddef;-->
+    <!--def map between ERK and environment for
+    vars time and time;
+enddef;-->
     <connection>
         <map_components component_1="PI3K" component_2="RasGDPtoRasGTP"/>
         <map_variables variable_1="ShGS" variable_2="ShGS"/>

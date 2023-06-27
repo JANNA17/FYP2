@@ -1,4 +1,4 @@
-<?xml version='1.0'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <model name="dS2cytokines" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:xlink="http://www.w3.org/1999/xlink">
     <import xlink:href="hatakeyama_2003.cellml">
         <component component_ref="ERK" name="ERK"/>
@@ -332,9 +332,9 @@
     </component>
     <component name="TNF">
         <variable name="time" public_interface="in" units="s"/>
-        <variable name="ShGS" public_interface="in" units="nm"/>
+        <variable name="PI3Kstar" public_interface="in" units="nm"/>
         <variable name="RasGTP" public_interface="in" units="nm"/>
-        <variable name="Akt_PIPP" public_interface="in" units="nm"/>
+        <variable name="Akt_PIP" public_interface="in" units="nm"/>
         <variable name="RAF_star" public_interface="in" units="nm"/>
         <variable name="MEKPP" public_interface="in" units="nm"/>
         <variable name="ERKPP_normalised" public_interface="in" units="nm"/>
@@ -378,10 +378,6 @@
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
-        <map_components component_1="PI3K" component_2="environment"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
         <map_components component_1="environment" component_2="ERK"/>
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
@@ -390,11 +386,7 @@
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
-        <map_components component_1="environment" component_2="RAF"/>
-        <map_variables variable_1="time" variable_2="time"/>
-    </connection>
-    <connection>
-        <map_components component_1="RasGDPtoRasGTP" component_2="environment"/>
+        <map_components component_1="RAF" component_2="environment"/>
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
@@ -402,20 +394,34 @@
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
-        <map_components component_1="PI3K" component_2="TNF"/>
-        <map_variables variable_1="ShGS" variable_2="ShGS"/>
+        <map_components component_1="PI3K" component_2="environment"/>
+        <map_variables variable_1="time" variable_2="time"/>
+    </connection>
+    <connection>
+        <map_components component_1="RasGDPtoRasGTP" component_2="environment"/>
+        <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
         <map_components component_1="RasGDPtoRasGTP" component_2="TNF"/>
         <map_variables variable_1="RasGTP" variable_2="RasGTP"/>
     </connection>
     <connection>
-        <map_components component_1="MEK" component_2="TNF"/>
-        <map_variables variable_1="MEKPP" variable_2="MEKPP"/>
+        <map_components component_1="PI3K" component_2="TNF"/>
+        <map_variables variable_1="PI3Kstar" variable_2="PI3Kstar"/>
+    </connection>
+    <connection>
+        <map_components component_1="Akt" component_2="TNF"/>
+        <map_variables variable_1="Akt_PIP" variable_2="Akt_PIP"/>
+        <!--      vars PI3Kstar and PI3Kstar;-->
     </connection>
     <connection>
         <map_components component_1="RAF" component_2="TNF"/>
         <map_variables variable_1="RAF_star" variable_2="RAF_star"/>
+        <!--vars RasGTP and RasGTP;-->
+    </connection>
+    <connection>
+        <map_components component_1="TNF" component_2="MEK"/>
+        <map_variables variable_1="MEKPP" variable_2="MEKPP"/>
     </connection>
     <connection>
         <map_components component_1="ERK" component_2="TNF"/>
@@ -426,17 +432,5 @@
         <map_components component_1="hCactivating" component_2="DAP12"/>
         <map_variables variable_1="J1" variable_2="J1"/>
         <map_variables variable_1="hCdS2" variable_2="hCdS2"/>
-    </connection>
-    <connection>
-        <map_components component_1="PI3K" component_2="RasGDPtoRasGTP"/>
-        <map_variables variable_1="ShGS" variable_2="ShGS"/>
-    </connection>
-    <connection>
-        <map_components component_1="RasGDPtoRasGTP" component_2="RAF"/>
-        <map_variables variable_1="RasGTP" variable_2="RasGTP"/>
-    </connection>
-    <connection>
-        <map_components component_1="RAF" component_2="Akt"/>
-        <map_variables variable_1="Akt_PIPP" variable_2="Akt_PIPP"/>
     </connection>
 </model>
